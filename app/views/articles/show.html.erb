@@ -1,5 +1,6 @@
 <div class="post-articles font-monospace">
   <h1 class="font-monospace"><%= @article.title %></h1>
+  <p class="user_create">Criado por: <%= @article.user.email %></p>
 
   <p class="font-monospace"><%= @article.body %></p>
 
@@ -35,5 +36,9 @@
   gap: 1em;
   padding: 0;
   text-decoration:none;
+}
+.user_create{
+   text-decoration: underline;
+   font-size: 12px;
 }
 </style>

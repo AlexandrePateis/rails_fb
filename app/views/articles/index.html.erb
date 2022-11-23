@@ -31,11 +31,12 @@
     <thead>
       <th>Id</th>
       <th>Title</th>
+      <th>Make to</th>
       <th>Status</th>
       <th>Creation time</th>
       <th>Update time</th>
       <th>Action</th>
-      <th colpan="3"></th>
+      <th colpan="2"></th>
     </thead>
       
     <tbody>
@@ -44,6 +45,7 @@
         <% unless article.archived? %>
         <td><%= article.id %></td>
         <td><%= article.title().capitalize %></td>
+        <td><%= article.user.email %></td>
         <td><%= article.status %></td>
         <td><%= article.created_at %></td>
         <td><%= article.updated_at %></td>
