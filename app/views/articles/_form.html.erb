@@ -1,0 +1,45 @@
+<div class="form-article ">
+<%= simple_form_for @article do |f| %>
+  <!-Input do title->
+  <div>
+    <%= f.input :title %>
+  </div>
+
+  <!-Input do body->
+  <div>
+    <%= f.label :body %><br>
+    <%= f.text_area :body, class: 'form-control' %><br>
+  </div>
+
+  <!-Input do status->
+  <div>
+    <%= f.label :status%><br>
+    <%=f.input :status, collection: [('public'), ('private'), ('archived')], label: false%>
+  </div>
+  
+  <!-Div que separa os botões->
+  <div class="btnss">
+    <%= f.submit "Enviar", class: "btn btn-primary" %>
+    <a href="/articles" class="font-monospace btn btn-secondary">Voltar</a>
+  </div>
+<% end %>
+
+</div>
+
+<style>
+.form-article{
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 2em;
+}
+
+.btnss{
+  display: flex;
+  align-items: center !important;
+  margin-top: 15px;
+  gap:1em;
+}
+.btn-secondary{
+  margin: 0 !important;
+}
+</style>

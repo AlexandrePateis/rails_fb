@@ -1,0 +1,36 @@
+<%= simple_form_for [ @article, @article.comments.build ] do |f| %>
+
+  <!-Quem comentou->
+  <div>
+    <%= f.input :commenter %>
+  </div>
+
+  <!-Comentário->
+  <div>
+    <%= f.label :body %><br>
+    <%= f.text_area :body, class: 'form-control' %><br>
+  </div>
+
+  <!-Seleção de status->
+  <div>
+    <%= f.label :status%><br>
+    <%=f.input :status, collection: [('public'), ('private'), ('archived')], label: false%>
+  </div>
+  
+  <!-Div que separa os botões->
+  <div class="btnss">
+    <%= f.submit "Enviar", class: "btn btn-primary" %>
+    <a href="/articles" class="font-monospace btn btn-secondary">Voltar</a>
+  </div>
+<% end %>
+
+
+
+<style>
+.btnss{
+  display: flex;
+  gap:1em;
+  margin-top: 15px;
+}
+
+</style>

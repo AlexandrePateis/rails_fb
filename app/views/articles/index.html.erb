@@ -1,0 +1,78 @@
+<div class="index font-monospace">
+  <h1 class="font-monospace fs-1" >Articles</h1>
+    <p class="font-monospace">Our blog has <%= Article.public_count %> articles and counting!</p>
+
+    <div class="filtros">
+    <!-Filtra por titulo do artigo->
+    <%= search_form_for @q do |f| %>
+      <div class="separetor"><%= f.search_field :title_cont, :class =>"form-control me-2", :placeholder => "Pesquisar por titulo" %>
+    </div>
+    
+    <!-Filtra por status do artigo->
+    <div class="form-group separetor">
+      <%= f.select(:status_eq, options_for_select(Visible::VALID_STATUSES, 
+      selected:params[:q] && params[:q][:status_eq]), 
+      { include_blank: true }, {class: "form-control" }) %>
+    </div>
+
+    <!-Filtra por conteúdo do comentárioo->
+    <div class="form-group separetor">
+      <%= f.search_field :comments_body_cont,
+      :class=> "form-control", 
+      :placeholder => "Pesquisar por comentário"
+      %>
+    </div>
+      <%= f.submit :class=>"btn btn-primary " %>
+    <% end %>
+    </div>
+    
+
+  <table class="table">
+    <thead>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Status</th>
+      <th>Creation time</th>
+      <th>Update time</th>
+      <th>Action</th>
+      <th colpan="3"></th>
+    </thead>
+      
+    <tbody>
+      <tr>
+        <% @articles.each do |article| %>
+        <% unless article.archived? %>
+        <td><%= article.id %></td>
+        <td><%= article.title().capitalize %></td>
+        <td><%= article.status %></td>
+        <td><%= article.created_at %></td>
+        <td><%= article.updated_at %></td>
+        <td><a href="/articles/<%=article.id%>">See</a></td>
+      </tr>
+      <%end%>
+      <%end%>
+    </tbody>
+  </table>
+
+  
+
+
+  <p class="font-monospace"><%= link_to "New Article", new_article_path %></p>
+</div>
+
+<style>
+.index{
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 2em;
+}
+.separetor{
+  gap:10px;
+  margin-bottom:2em;
+  margin-right:5px;
+  float: left;
+  width: 16em;
+}
+.filtros{
+}
+</style>

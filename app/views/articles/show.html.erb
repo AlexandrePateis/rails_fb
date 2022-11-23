@@ -1,0 +1,39 @@
+<div class="post-articles font-monospace">
+  <h1 class="font-monospace"><%= @article.title %></h1>
+
+  <p class="font-monospace"><%= @article.body %></p>
+
+  <ul class="op-art">
+    <li><%= link_to "Edit", edit_article_path(@article) %></li>
+    <li><%= link_to "Destroy", article_path(@article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+  </ul>
+
+  <h2 class="font-monospace">Comments</h2>
+
+  <%= render @article.comments %>
+
+  <h2 class="font-monospace">Add a comment:</h2>
+
+  <%= render 'comments/form' %>
+   <ul>
+    
+    
+  </ul>
+</div>
+
+<style>
+.post-articles{
+  width: 33%;
+  margin: 0 auto;
+}
+.op-art, a{
+  list-style :none;
+  display: flex;
+  gap: 1em;
+  padding: 0;
+  text-decoration:none;
+}
+</style>
