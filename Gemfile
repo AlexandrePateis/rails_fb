@@ -6,6 +6,7 @@ gem "sprockets-rails"
 gem "sqlite3", "~> 1.4"
 gem 'simple_form'
 gem 'pry'
+gem 'cancancan'
 gem 'devise'
 gem 'ransack'
 gem 'bootstrap'

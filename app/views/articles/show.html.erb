@@ -5,11 +5,12 @@
   <p class="font-monospace"><%= @article.body %></p>
 
   <ul class="op-art">
-    <li><%= link_to "Edit", edit_article_path(@article) %></li>
+    <li><%= link_to "Edit", edit_article_path(@article), class: "btn btn-secondary" %></li>
     <li><%= link_to "Destroy", article_path(@article), data: {
                     turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
+                    turbo_confirm: "Are you sure?",
+                    
+                  },class: "btn btn-danger" %></li>
   </ul>
 
   <h2 class="font-monospace">Comments</h2>
