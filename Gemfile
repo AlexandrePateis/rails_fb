@@ -24,6 +24,8 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "letter_opener", "~> 1.8"
+
 
 end
 
@@ -32,3 +34,4 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
