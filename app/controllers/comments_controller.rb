@@ -1,15 +1,20 @@
 class CommentsController < ApplicationController
     
-    http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
     def index
         @q = Comments.ransack(params[:q])
         @come = @q.result(distinct: true)
       end
-
+    
     def create 
         @article = Article.find(params[:article_id])
         @comment = @article.comments.create(comment_params)
-        redirect_to article_path(@article)
+        @comment.user_id = current_user.id
+        if @comment.save 
+            redirect_to article_path(@article)
+        else
+            flash.now[:danger] ="error"
+        end
+        
     end
 
     def destroy
@@ -21,7 +26,7 @@ class CommentsController < ApplicationController
 
     private
     def comment_params
-        params.require(:comment).permit(:commenter, :body, :status)
+        params.require(:comment).permit( :body, :status)
     end
 end
 

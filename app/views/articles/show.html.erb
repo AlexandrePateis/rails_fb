@@ -13,6 +13,7 @@
                   },class: "btn btn-danger" %></li>
   </ul>
 
+  <% if user_signed_in? %>
   <h2 class="font-monospace">Comments</h2>
 
   <%= render @article.comments %>
@@ -20,10 +21,7 @@
   <h2 class="font-monospace">Add a comment:</h2>
 
   <%= render 'comments/form' %>
-   <ul>
-    
-    
-  </ul>
+  <%end%>
 </div>
 
 <style>
