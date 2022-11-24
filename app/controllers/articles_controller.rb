@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-
+  load_and_authorize_resource
   before_action :authenticate_user!, except: %i[index show]
 
   def index
@@ -27,11 +27,11 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+
   end
 
   def update
     @article = Article.find(params[:id])
-
     if @article.update(article_params)
       redirect_to @article
     else
