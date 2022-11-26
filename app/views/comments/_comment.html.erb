@@ -1,4 +1,8 @@
 <% unless comment.archived? %>
+   <p>
+    <strong>Status:</strong>
+    <%= comment.status %>
+  </p>
   <p>
     <strong>Commenter:</strong>
     <%= comment.user.email %>

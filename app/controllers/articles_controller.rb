@@ -49,6 +49,6 @@ end
 
   private
     def article_params
-      params.require(:article).permit(:title, :body, :status)
+      params.require(:article).permit(:title, :body, :status, comments_attributes: [:id, :_destroy, :body, :status] )
     end
 end

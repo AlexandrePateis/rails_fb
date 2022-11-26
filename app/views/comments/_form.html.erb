@@ -1,8 +1,7 @@
 <%= simple_form_for [ @article, @article.comments.build ] do |f| %>
 
-
-  <!-Comentário->
-  <div>
+<div class="nested-form-wrapper bg-blue-200" data-new-record="<%= f.object.new_record? %>">
+ <div>
     <%= f.label :body %><br>
     <%= f.text_area :body, class: 'form-control' %><br>
   </div>
@@ -15,18 +14,14 @@
   
   <!-Div que separa os botões->
   <div class="btnss">
-    <%= f.submit "Enviar", class: "btn btn-primary" %>
-    <a href="/articles" class="font-monospace btn btn-secondary">Voltar</a>
+    <button type="button" data-action="nested-form#remove" class="btn">Remove</button>
+
   </div>
-<% end %>
-
-
+<%end%>
 
 <style>
-.btnss{
-  display: flex;
-  gap:1em;
-  margin-top: 15px;
+.btn{
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
-
 </style>
