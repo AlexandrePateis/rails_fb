@@ -32,7 +32,7 @@
       <%= f.submit :class=>"btn btn-primary " %>
     <% end %>
     </div>
-    
+
 
   <table class="table">
     <thead>
@@ -63,10 +63,9 @@
     </tbody>
   </table>
 
-  
+  <%= link_to "New Article", new_article_path, class: "font-monospace btn btn-primary" %>
+  <%= paginate @articles %>
 
-
-  <p class="font-monospace"><%= link_to "New Article", new_article_path %></p>
 </div>
 
 <style>
@@ -85,5 +84,8 @@
 .alert{
   width: 50%;
   margin: 0 auto;
+}
+.btn{
+  margin-bottom: 9px;
 }
 </style>

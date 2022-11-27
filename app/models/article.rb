@@ -1,4 +1,6 @@
 class Article < ApplicationRecord
+    paginates_per 5
+
     include Visible
     belongs_to :user
     has_many :comments, dependent: :destroy
