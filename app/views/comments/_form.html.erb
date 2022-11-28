@@ -1,7 +1,6 @@
-<%= simple_form_for [ @article, @article.comments.build ] do |f| %>
-
-<div class="nested-form-wrapper bg-blue-200" data-new-record="<%= f.object.new_record? %>">
- <div>
+<div class="nested-form-wrapper" data-new-record="<%= f.object.new_record? %>">
+    <%= f.hidden_field :user_id, value: current_user.id %>
+   <div>
     <%= f.label :body %><br>
     <%= f.text_area :body, class: 'form-control' %><br>
   </div>
@@ -9,7 +8,7 @@
   <!-Seleção de status->
   <div>
     <%= f.label :status%><br>
-    <%=f.input :status, collection: [('public'), ('private')], label: false%>
+    <%=f.select :status, [["Public", "public"], ["Private", "private"], ["Archived", "archived"]], selected: "public", class: 'form-select' %>
   </div>
   
   <!-Div que separa os botões->
@@ -17,7 +16,9 @@
     <button type="button" data-action="nested-form#remove" class="btn">Remove</button>
 
   </div>
-<%end%>
+</div>
+
+
 
 <style>
 .btn{

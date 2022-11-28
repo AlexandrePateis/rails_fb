@@ -13,11 +13,13 @@
                   },class: "btn btn-danger" %></li>
   </ul>
 <%= render @article.comments %>
+
   <% if user_signed_in? %>
-        <%= simple_form_for [ @article, @article.comments.build ],
+        <%= form_with model: @article,
          data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' } do |f| %>
           
           <template data-nested-form-target="template">
+          
           <%= f.fields_for :comments, Comment.new, child_index: 'NEW_RECORD' do |comment_fields| %>
             <%= render "comments/form", f: comment_fields %>
           <% end %>
@@ -27,9 +29,9 @@
           <div data-nested-form-target="target"></div>
 
           <button type="button" data-action="nested-form#add" class="btn btn-primary">Add Comment</button>
-          <%= f.submit "Enviar", class: "btn btn-outline-primary" %>
-          <a href="/articles" class="font-monospace btn btn-secondary">Voltar</a>
+          <%= f.submit 'Enviar', class: "btn btn-outline-primary" %>
 
+          <a href="/articles" class="font-monospace btn btn-secondary">Voltar</a>
         <%end%>
   <%end%>
 
