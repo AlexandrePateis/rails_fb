@@ -8,7 +8,7 @@
   <!-Seleção de status->
   <div>
     <%= f.label :status%><br>
-    <%=f.select :status, [["Public", "public"], ["Private", "private"], ["Archived", "archived"]], selected: "public", class: 'form-select' %>
+    <%=f.select :status, [["Public", "public"], ["Private", "private"], ["Archived", "archived"]], {selected: "public"}, { :class => 'form-select' } %>
   </div>
   
   <!-Div que separa os botões->

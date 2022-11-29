@@ -5,8 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-45.times do 
+5.times do 
     title_art = Faker::Book.title
     body =Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false)
-    Article.create(title: title_art, body: body, status:"public", user_id: 6)
+    Article.create(title: title_art, body: body, status:"private", user_id: 6)
 end

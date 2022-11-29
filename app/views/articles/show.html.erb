@@ -15,14 +15,16 @@
 <%= render @article.comments %>
 
   <% if user_signed_in? %>
+
         <%= form_with model: @article,
          data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' } do |f| %>
           
           <template data-nested-form-target="template">
           
-          <%= f.fields_for :comments, Comment.new, child_index: 'NEW_RECORD' do |comment_fields| %>
-            <%= render "comments/form", f: comment_fields %>
-          <% end %>
+            <%= f.fields_for :comments, Comment.new, child_index: 'NEW_RECORD' do |comment_fields| %>
+              <%= render "comments/form", f: comment_fields %>
+            <% end %>
+            
           </template>
             
 
@@ -33,6 +35,7 @@
 
           <a href="/articles" class="font-monospace btn btn-secondary">Voltar</a>
         <%end%>
+
   <%end%>
 
 
