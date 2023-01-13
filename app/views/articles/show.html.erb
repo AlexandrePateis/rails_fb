@@ -4,6 +4,8 @@
 
   <p class="font-monospace"><%= @article.body %></p>
 
+  <%= render 'articles/attachment', article: @article %>
+  
   <ul class="op-art">
     <li><%= link_to "Edit", edit_article_path(@article), class: "btn btn-secondary" %></li>
     <li><%= link_to "Destroy", article_path(@article), data: {
@@ -32,7 +34,6 @@
 
           <button type="button" data-action="nested-form#add" class="btn btn-primary">Add Comment</button>
           <%= f.submit 'Enviar', class: "btn btn-outline-primary" %>
-
           <a href="/articles" class="font-monospace btn btn-secondary">Voltar</a>
         <%end%>
 

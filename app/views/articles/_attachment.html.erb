@@ -1,0 +1,14 @@
+<% if article.file.attached? %>
+    <div class="row">
+            <div class = "messagem-image-contanier">
+                <%= image_tag(article.file, class: "message-image") %>
+            </div>
+    </div>
+<%end%>
+
+<style>
+.message-image{
+    width: 35%;
+    margin: 10px;
+}
+</style>

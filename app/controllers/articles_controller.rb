@@ -18,7 +18,6 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.new(article_params)
-
     if @article.save
       redirect_to @article
     else
@@ -26,17 +25,15 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def edit
+  def edit    
     @article = Article.find(params[:id])
   end
 
   def update
-    
-    
-    @article = Article.find(params[:id])
+    @article = Article.find(params[:id])    
     if @article.update(article_params)
       redirect_to @article
-    else
+    else            
       render :edit, status: :unprocessable_entity
     end
   end
@@ -50,6 +47,6 @@ end
 
   private
     def article_params
-      params.require(:article).permit(:title, :body, :status, comments_attributes: [:id, :_destroy, :body, :status, :user_id] )
+      params.require(:article).permit(:title, :body, :status, :file, comments_attributes: [:id, :_destroy, :body, :status, :user_id] )
     end
 end

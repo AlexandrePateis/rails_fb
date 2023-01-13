@@ -18,10 +18,17 @@
   </div>
   
   <!-Div que separa os botões->
+ 
+
   <div class="btnss">
+    <%= f.file_field :file, class: "form-control", id: "inputGroupFile04"%>
+  </div>
+
+   <div class="btnss">
     <%= f.submit "Enviar", class: "btn btn-primary" %>
     <a href="/articles" class="font-monospace btn btn-secondary">Voltar</a>
   </div>
+
 <% end %>
 
 </div>

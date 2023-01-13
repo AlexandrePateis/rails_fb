@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
     before_action :authenticate_user!, except: %i[index show]
     load_and_authorize_resource
 
+
     def index
         @q = Comments.ransack(params[:q])
         @come = @q.result(distinct: true)
@@ -10,12 +11,11 @@ class CommentsController < ApplicationController
     def create 
         @article = Article.find(params[:article_id])
         @comment = @article.comments.create(comment_params)
-        @comment.user_id = current_user.id
-        
+        @comment.user_id = current_user.id        
         if @comment.save 
             redirect_to article_path(@article)
         else
-            
+                        
             flash.now[:danger] ="error"
         end
         
